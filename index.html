@@ -181,19 +181,15 @@
 </template>
 
 <script>
+  const HEIGHT_RATIO = 1.337;
   var fireballSize = 22;
   var wizardSpeed = 3;
   var wizardWidth = 70;
   var getFireballSpeed = function(isLeftDirection) {
-    /* if (isLeftDirection) {
-      return 2;
-    } else {
-      return 5;
-    }; */
     return isLeftDirection ? 2 : 5;
   };
   var getWizardHeight = function() {
-    return 1.337 * wizardWidth;
+    return HEIGHT_RATIO * wizardWidth;
   };
   var getWizardX = function(fieldWidth) {
     return (fieldWidth - wizardWidth) / 2;
