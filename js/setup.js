@@ -13,12 +13,16 @@ var getRandomElement = function (currentArray) {
   return Math.round(Math.random() * maxIndex);
 };
 
+var getElementByRandomIndex = function (currentArray) {
+  var index = getRandomElement(currentArray);
+  return currentArray[index];
+};
+
 var getFullName = function (names, lastNames, changeBound = 0.3) {
   if (Math.random() < changeBound) {
-    return lastNames[getRandomElement(lastNames)] + ' ' + names[getRandomElement(names)];
-  } else {
-    return names[getRandomElement(names)] + ' ' + lastNames[getRandomElement(lastNames)];
+    return getElementByRandomIndex(lastNames) + ' ' + getElementByRandomIndex(names);
   }
+  return getElementByRandomIndex(names) + ' ' + getElementByRandomIndex(lastNames);
 };
 
 var createWizards = function (elementQuantity = 4) {
@@ -26,8 +30,8 @@ var createWizards = function (elementQuantity = 4) {
   for (var i = 0; i < elementQuantity; i++) {
     wizards.push({
       name: getFullName(NAMES, LAST_NAMES),
-      coatColor: COATS[getRandomElement(COATS)],
-      eyesColor: EYES[getRandomElement(EYES)],
+      coatColor: getElementByRandomIndex(COATS),
+      eyesColor: getElementByRandomIndex(EYES),
     });
   }
   return wizards;
